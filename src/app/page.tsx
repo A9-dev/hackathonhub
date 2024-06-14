@@ -7,7 +7,7 @@ export default function Home() {
       <button type="button" className="btn btn-info">
         Info
       </button>
-      <button type="button" class="btn btn-primary">
+      <button type="button" className="btn btn-primary">
         Primary
       </button>
     </main>
