@@ -78,15 +78,12 @@ const Navbar: React.FC = () => {
                 <span className="navbar-text me-3">
                   Signed in as: <strong>{username}</strong>
                 </span>
-                <button
-                  onClick={handleLogout}
-                  className="btn btn-outline-danger"
-                >
+                <button onClick={handleLogout} className="btn btn-secondary">
                   Sign Out
                 </button>
               </>
             ) : (
-              <Link href="/login" passHref className="btn btn-outline-success">
+              <Link href="/login" passHref className="btn btn-primary">
                 Log In
               </Link>
             )}
