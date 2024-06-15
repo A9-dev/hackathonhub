@@ -1,5 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
+import { ToastContainer, ToastOptions, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { db, auth } from "@/utils/firebaseConfig";
 import {
 	createUserWithEmailAndPassword,
@@ -7,13 +9,13 @@ import {
 	sendPasswordResetEmail,
 	onAuthStateChanged,
 	signOut,
+	User,
 } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
 import { redirect } from "next/navigation";
-import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Login() {
-	const [user, setUser] = useState(null);
+	const [user, setUser] = useState<User | null>(null);
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
 	const [username, setUsername] = useState(""); // Additional state for username
@@ -28,6 +30,7 @@ export default function Login() {
 				const userDoc = await getDoc(userRef);
 				if (userDoc.exists()) {
 					setUsername(userDoc.data().username);
+					toast.success("Signed in successfully!");
 					setMessage(`Welcome back, ${userDoc.data().username}!`);
 				} else {
 					setMessage("Welcome back!");
@@ -40,22 +43,25 @@ export default function Login() {
 	const handleSignOut = async () => {
 		try {
 			await signOut(auth);
+			setUser(null);
+			toast.success("Signed out.");
 		} catch (error) {
-			console.error("Error signing out:", error);
+			console.error("Error signing out:", error as ToastOptions<unknown>);
+			toast.error("Error signing out. Please try again.");
 		}
 	};
 
-	const handleSignIn = async (event) => {
+	const handleSignIn = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		try {
 			await signInWithEmailAndPassword(auth, email, password);
 		} catch (error) {
-			console.error("Error signing in:", error);
-			alert("Failed to sign in. Please check your credentials.");
+			console.error("Error signing in:", error as ToastOptions<unknown>);
+			toast.error("Failed to sign in. Please check your credentials.");
 		}
 	};
 
-	const handleRegister = async (event) => {
+	const handleRegister = async (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		try {
 			const userCredential = await createUserWithEmailAndPassword(
@@ -69,23 +75,30 @@ export default function Login() {
 					username: username,
 					email: email,
 				});
+				toast.success("Registration successful!");
 				setMode("login");
 			}
 		} catch (error) {
-			console.error("Error registering:", error);
+			console.error("Error registering:", error as ToastOptions<unknown>);
+			toast.error("Registration failed. Please try again.");
 			alert("Registration failed. Please try again.");
 		}
 	};
 
-	const handleResetPassword = async (event) => {
+	const handleResetPassword = async (
+		event: React.FormEvent<HTMLFormElement>
+	) => {
 		event.preventDefault();
 		try {
 			await sendPasswordResetEmail(auth, email);
-			alert("Password reset email sent.");
+			toast.info("Password reset email sent.");
 			setMode("login");
 		} catch (error) {
-			console.error("Error sending password reset email:", error);
-			alert(
+			console.error(
+				"Error sending password reset email:",
+				error as ToastOptions<unknown>
+			);
+			toast.error(
 				"Failed to send password reset email. Please check your email address."
 			);
 		}
@@ -93,6 +106,17 @@ export default function Login() {
 
 	return (
 		<div className="container mt-5">
+			<ToastContainer
+				position="bottom-right"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				rtl={false}
+				pauseOnFocusLoss
+				draggable
+				pauseOnHover
+			/>
 			<main className="border p-4 shadow rounded">
 				<h1 className="text-center mb-4">
 					{mode === "login"

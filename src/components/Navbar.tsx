@@ -1,56 +1,97 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
+import Link from "next/link";
+import { useUser } from "@/contexts/UserContext";
+import { auth } from "@/utils/firebaseConfig";
+import { signOut } from "firebase/auth";
+import { toast } from "react-toastify";
 
 const Navbar: React.FC = () => {
-  const [active, setActive] = useState<string>("home");
+	const { username, loading } = useUser() || {};
 
-  return (
-    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
-      <div className="container-fluid">
-        <a className="navbar-brand" href="#">
-          HackathonHub
-        </a>
-        <button className="navbar-toggler" type="button">
-          <span className="navbar-toggler-icon"></span>
-        </button>
+	const handleLogout = async () => {
+		try {
+			await signOut(auth);
+			toast.success("You've been signed out successfully.");
+		} catch (error) {
+			console.error("Logout failed:", error);
+			toast.error("Failed to sign out.");
+		}
+	};
 
-        <ul className="navbar-nav me-auto mb-2 mb-md-0">
-          <li className="nav-item">
-            <a
-              className={`nav-link ${active === "home" ? "active" : ""}`}
-              href="/"
-              onClick={() => setActive("home")}
-            >
-              Home
-            </a>
-          </li>
+	// Dynamically import Bootstrap JS, manipulates DOM which is not SSR compatible
+	// TODO: Find a better way to handle this. Move to react-bootstrap?
+	React.useEffect(() => {
+		const bootstrap = async () => {
+			const bs = await import("bootstrap/dist/js/bootstrap.bundle.min");
+		};
+		bootstrap();
+	}, []);
 
-          <li className="nav-item">
-            <a
-              className={`nav-link ${active === "submissions" ? "active" : ""}`}
-              href="/submissions"
-              onClick={() => setActive("submissions")}
-            >
-              Submissions
-            </a>
-          </li>
-          <li className="nav-item">
-            <a
-              className={`nav-link ${active === "calendar" ? "active" : ""}`}
-              href="/calendar"
-              onClick={() => setActive("calendar")}
-            >
-              Calendar
-            </a>
-          </li>
-          <li className="nav-item">
-            <a className="nav-link" href="#"></a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-  );
+	return (
+		<nav className="navbar navbar-expand-md navbar-dark bg-dark">
+			<div className="container-fluid">
+				<Link href="/" passHref className="navbar-brand">
+					HackathonHub
+				</Link>
+				<button
+					className="navbar-toggler"
+					type="button"
+					data-bs-toggle="collapse"
+					data-bs-target="#navbarNav"
+					aria-controls="navbarNav"
+					aria-expanded="false"
+					aria-label="Toggle navigation"
+				>
+					<span className="navbar-toggler-icon"></span>
+				</button>
+
+				<div className="collapse navbar-collapse" id="navbarNav">
+					<ul className="navbar-nav me-auto mb-2 mb-md-0">
+						<li className="nav-item">
+							<Link href="/" passHref className="nav-link">
+								Home
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link href="/submissions" passHref className="nav-link">
+								Submissions
+							</Link>
+						</li>
+						<li className="nav-item">
+							<Link href="/calendar" passHref className="nav-link">
+								Calendar
+							</Link>
+						</li>
+					</ul>
+					<div className="ms-auto">
+						{loading ? (
+							<div className="spinner-border text-light" role="status">
+								<span className="visually-hidden">Loading...</span>
+							</div>
+						) : username ? (
+							<>
+								<span className="navbar-text me-3">
+									Signed in as: <strong>{username}</strong>
+								</span>
+								<button
+									onClick={handleLogout}
+									className="btn btn-outline-danger"
+								>
+									Sign Out
+								</button>
+							</>
+						) : (
+							<Link href="/login" passHref className="btn btn-outline-success">
+								Log In
+							</Link>
+						)}
+					</div>
+				</div>
+			</div>
+		</nav>
+	);
 };
 
 export default Navbar;

@@ -1,16 +1,19 @@
 import Navbar from "@/components/Navbar";
+import { UserProvider } from "@/contexts/UserContext";
 
 export default function RootLayout({
-  children,
+	children,
 }: Readonly<{
-  children: React.ReactNode;
+	children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <body>
-        <Navbar />
-        {children}
-      </body>
-    </html>
-  );
+	return (
+		<UserProvider>
+			<html lang="en">
+				<body>
+					<Navbar />
+					{children}
+				</body>
+			</html>
+		</UserProvider>
+	);
 }
