@@ -1,7 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
-import { db } from "../utils/firebaseConfig";
-import { collection, getDocs } from "firebase/firestore";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 export default function Home() {

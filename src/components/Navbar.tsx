@@ -53,6 +53,11 @@ const Navbar: React.FC = () => {
               </Link>
             </li>
             <li className="nav-item">
+              <Link href="/teams" passHref className="nav-link">
+                Teams
+              </Link>
+            </li>
+            <li className="nav-item">
               <Link href="/submissions" passHref className="nav-link">
                 Submissions
               </Link>
@@ -73,7 +78,10 @@ const Navbar: React.FC = () => {
                 <span className="navbar-text me-3">
                   Signed in as: <strong>{username}</strong>
                 </span>
-                <button onClick={handleLogout} className="btn btn-outline-danger">
+                <button
+                  onClick={handleLogout}
+                  className="btn btn-outline-danger"
+                >
                   Sign Out
                 </button>
               </>
