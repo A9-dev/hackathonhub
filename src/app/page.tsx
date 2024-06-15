@@ -41,13 +41,14 @@ export default function Home() {
               or hardware projects within a short timeframe, often focused on specific themes or
               challenges, with opportunities for learning, networking, and winning prizes.
             </p>
-            <figcaption className="blockquote-footer">ChatGPT</figcaption>
+            <figcaption className="blockquote-footer">GPT 3.5</figcaption>
           </figure>
 
           <h3>2. How do I participate?</h3>
           <p className="mx-3">
             In your team, you will build a project that fits the theme of the hackathon. Before the
-            time is up, you can submit your project by providing a link to the GitHub repo.
+            time is up, you can submit your project by providing a link to the GitHub repo.{" "}
+            <b>Make sure to include a README.md in the repo! </b>
           </p>
           <h3>3. What are the rules?</h3>
 
@@ -55,7 +56,7 @@ export default function Home() {
             <li>Teams can consist of 1-5 members.</li>
             <li>
               All code and assets must be created during the hackathon period. Pre-existing code is
-              not allowed.
+              not allowed (other than public libraries/frameworks).
             </li>
             <li>Projects must be submitted before the deadline to be eligible for judging.</li>
             <li>Teams must adhere to the theme or challenge provided by the organizers.</li>
@@ -85,6 +86,16 @@ export default function Home() {
             You will earn experience points and badges that can customize your appearance on the
             website and be shown off on your profile. Also, companies that sponsor a hackathon will
             be able to see your work and may reach out to you for job opportunities.
+          </p>
+          <h3>7. What should be in README.md?</h3>
+          <p>
+            <ul>
+              <li>Thing 1</li>
+              <li>Thing 2</li>
+              <li>Thing 3</li>
+              <li>Thing 4</li>
+              <li>Thing 5</li>
+            </ul>
           </p>
         </div>
       </div>
