@@ -7,7 +7,10 @@ export default function Home() {
 
   return (
     <main>
-      <div className="container-fluid text-center p-5 shadow">
+      <div
+        className="container-fluid text-center p-5 shadow-lg border rounded-5 rounded-top-0"
+        style={{ width: "90%" }}
+      >
         <h1 className="display-1">{prompt}</h1>
         <p>01:13:21</p>
       </div>
