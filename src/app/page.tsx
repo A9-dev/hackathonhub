@@ -32,6 +32,7 @@ export default function Home() {
           <h4>We organise online hackathons!</h4>
         </div>
         <br />
+        <hr className="solid mx-auto mb-5" style={{ width: "90%" }} />
         <div className="m-auto" style={{ width: "85%" }}>
           <h3>1. What is a hackathon?</h3>
 
