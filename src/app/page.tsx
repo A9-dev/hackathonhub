@@ -6,8 +6,11 @@ export default function Home() {
   const [prompt, setPrompt] = useState<string>("Prompt!");
 
   return (
-    <main style={{ paddingBottom: "500px" }}>
-      <div className="container-fluid text-center p-5 bg-secondary-subtle">
+    <main>
+      <div
+        className="container-fluid text-center p-5 shadow-lg border rounded-5 rounded-top-0"
+        style={{ width: "90%" }}
+      >
         <h1 className="display-1">{prompt}</h1>
         <p>01:13:21</p>
       </div>
@@ -20,7 +23,7 @@ export default function Home() {
           <h4>We organise online hackathons!</h4>
         </div>
         <br />
-        <hr className="solid mx-auto mb-5" style={{ width: "90%" }} />
+        <hr className="solid mx-auto" style={{ width: "90%" }} />
         <div className="m-auto" style={{ width: "85%" }}>
           <h3>1. What is a hackathon?</h3>
 

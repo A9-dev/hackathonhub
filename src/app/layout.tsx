@@ -1,7 +1,7 @@
 import Navbar from "@/components/Navbar";
 import { UserProvider } from "@/contexts/UserContext";
 import "bootstrap/dist/css/bootstrap.min.css";
-
+import Footer from "@/components/Footer";
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -13,6 +13,7 @@ export default function RootLayout({
         <body>
           <Navbar />
           {children}
+          <Footer />
         </body>
       </html>
     </UserProvider>
