@@ -88,15 +88,13 @@ export default function Home() {
             be able to see your work and may reach out to you for job opportunities.
           </p>
           <h3>7. What should be in README.md?</h3>
-          <p>
-            <ul>
-              <li>Thing 1</li>
-              <li>Thing 2</li>
-              <li>Thing 3</li>
-              <li>Thing 4</li>
-              <li>Thing 5</li>
-            </ul>
-          </p>
+          <ul>
+            <li>Thing 1</li>
+            <li>Thing 2</li>
+            <li>Thing 3</li>
+            <li>Thing 4</li>
+            <li>Thing 5</li>
+          </ul>
         </div>
       </div>
     </main>
