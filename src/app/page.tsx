@@ -18,47 +18,73 @@ export default function Home() {
   }, []);
 
   return (
-    <main>
-      <div className="container-fluid text-center p-5 width-100% bg-secondary-subtle">
+    <main style={{ paddingBottom: "500px" }}>
+      <div className="container-fluid text-center p-5 bg-secondary-subtle">
         <h1 className="display-1">{prompt}</h1>
         <p>01:13:21</p>
       </div>
-      <div className="container border rounded-4 rounded-top-0 bg-primary-subtle p-5">
+      <div
+        className="container border rounded-4 rounded-top-0 bg-primary-subtle"
+        style={{ padding: "50px 20px 100px 20px" }}
+      >
         <div className="text-center">
           <h1>Welcome to HackathonHub!</h1>
-          <h2>This is a platform for hosting and managing hackathons.</h2>
+          <h4>We organise online hackathons!</h4>
         </div>
         <br />
-        <div className="m-auto" style={{ width: "70%" }}>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-            incididunt ut labore et dolore magna aliqua. Pretium fusce id velit ut tortor. Lacinia
-            at quis risus sed vulputate odio ut enim. Suspendisse faucibus interdum posuere lorem
-            ipsum dolor sit amet. Imperdiet proin fermentum leo vel orci porta. Pharetra massa massa
-            ultricies mi quis hendrerit dolor magna. Laoreet id donec ultrices tincidunt.
+        <div className="m-auto" style={{ width: "85%" }}>
+          <h3>1. What is a hackathon?</h3>
+
+          <figure className="mx-3">
+            <p>
+              A hackathon is an event where participants collaborate intensively to develop software
+              or hardware projects within a short timeframe, often focused on specific themes or
+              challenges, with opportunities for learning, networking, and winning prizes.
+            </p>
+            <figcaption className="blockquote-footer">ChatGPT</figcaption>
+          </figure>
+
+          <h3>2. How do I participate?</h3>
+          <p className="mx-3">
+            In your team, you will build a project that fits the theme of the hackathon. Before the
+            time is up, you can submit your project by providing a link to the GitHub repo.
           </p>
-          <b>
-            <ol style={{ listStylePosition: "inside" }}>
-              <li>Thing 1</li>
-              <li>Thing 2</li>
-              <li>Thing 3</li>
-              <li>Thing 4</li>
-              <li>Thing 5</li>
-            </ol>
-          </b>
-          <p>
-            In hendrerit gravida rutrum quisque non tellus. Facilisi nullam vehicula ipsum a arcu
-            cursus vitae. Sit amet facilisis magna etiam. Pellentesque dignissim enim sit amet
-            venenatis urna cursus. Nisi porta lorem mollis aliquam ut porttitor leo a diam. In hac
-            habitasse platea dictumst quisque sagittis purus sit amet. Pellentesque nec nam aliquam
-            sem et tortor consequat id porta. Neque convallis a cras semper. Pretium aenean pharetra
-            magna ac placerat. A iaculis at erat pellentesque adipiscing commodo elit at. Iaculis at
-            erat pellentesque adipiscing commodo elit at imperdiet. Lacus sed turpis tincidunt id
-            aliquet risus feugiat. At risus viverra adipiscing at in tellus integer. Scelerisque
-            mauris pellentesque pulvinar pellentesque habitant morbi. Quisque id diam vel quam
-            elementum. Ornare arcu dui vivamus arcu felis bibendum ut. Ultrices eros in cursus
-            turpis massa tincidunt dui. Tempus urna et pharetra pharetra massa massa. Lobortis
-            scelerisque fermentum dui faucibus in ornare quam viverra orci.
+          <h3>3. What are the rules?</h3>
+
+          <ul>
+            <li>Teams can consist of 1-5 members.</li>
+            <li>
+              All code and assets must be created during the hackathon period. Pre-existing code is
+              not allowed.
+            </li>
+            <li>Projects must be submitted before the deadline to be eligible for judging.</li>
+            <li>Teams must adhere to the theme or challenge provided by the organizers.</li>
+            <li>
+              Teams retain ownership of their projects, but organizers reserve the right to showcase
+              the projects for promotional purposes.
+            </li>
+            <li>
+              Judging criteria will be based on creativity, functionality, design, and adherence to
+              the theme.
+            </li>
+          </ul>
+          <h3>4. What should I build?</h3>
+          <p className="mx-3">
+            You can build anything you want, as long as it fits the theme of the hackathon. This
+            could be a web app, mobile app, game, AI model, hardware project, or anything else you
+            can imagine. Be creative and have fun!
+          </p>
+          <h3>5. How are they scored?</h3>
+          <p className="mx-3">
+            Pairs of projects will be given to users who will choose the winner based on creativity,
+            functionality, design, and adherence to the theme. Through intelligent and complex
+            algorithms, the ranking will be determined and points will be distributed.
+          </p>
+          <h3>6. What do I get out of it?</h3>
+          <p className="mx-3">
+            You will earn experience points and badges that can customize your appearance on the
+            website and be shown off on your profile. Also, companies that sponsor a hackathon will
+            be able to see your work and may reach out to you for job opportunities.
           </p>
         </div>
       </div>
