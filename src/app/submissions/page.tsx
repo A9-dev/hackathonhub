@@ -1,6 +1,8 @@
 "use client";
 import React, { useState } from "react";
 import { useUser } from "@/contexts/UserContext";
+import SubmitProject from "@/components/SubmitProjectForm";
+import CreateTeamForm from "@/components/CreateTeamForm";
 
 const Home = () => {
   const { user, teams, createTeam, submitProject } = useUser() ?? {};
@@ -56,78 +58,8 @@ const Home = () => {
   return (
     <div className="container mt-5">
       <h1 className="mb-4">Manage Your Teams and Submissions</h1>
-      <div className="card mb-3">
-        <div className="card-body">
-          <h2>Create Team</h2>
-          <form onSubmit={handleCreateTeam} className="form-inline">
-            <input
-              type="text"
-              value={teamName}
-              onChange={e => setTeamName(e.target.value)}
-              placeholder="Team Name"
-              className="form-control mr-2"
-              required
-            />
-            <button type="submit" className="btn btn-primary" disabled={loading}>
-              Create Team
-            </button>
-          </form>
-        </div>
-      </div>
-      <div className="card">
-        <div className="card-body">
-          <h2>Submit Your Project</h2>
-          <form onSubmit={handleSubmit}>
-            <div className="form-group">
-              <input
-                type="text"
-                value={title}
-                onChange={e => setTitle(e.target.value)}
-                placeholder="Title"
-                className="form-control"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <textarea
-                value={description}
-                onChange={e => setDescription(e.target.value)}
-                placeholder="Description"
-                className="form-control"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <input
-                type="url"
-                value={githubLink}
-                onChange={e => setGithubLink(e.target.value)}
-                placeholder="GitHub Link"
-                className="form-control"
-                required
-              />
-            </div>
-            <div className="form-group">
-              <select
-                value={selectedTeam}
-                onChange={e => setSelectedTeam(e.target.value)}
-                className="form-control"
-                required
-              >
-                <option value="">Select a team</option>
-                {(teams ?? []).map((team) => (
-                  <option key={team.id} value={team.id}>
-                    {team.name}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <button type="submit" className="btn btn-success" disabled={loading}>
-              {loading ? "Submitting..." : "Submit"}
-            </button>
-          </form>
-        </div>
-      </div>
+      <CreateTeamForm />
+      <SubmitProject />
     </div>
   );
 };
